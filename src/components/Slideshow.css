@@ -1,0 +1,88 @@
+
+.slideshow-bob-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.slideshow-bob-container .bob {
+  width: 600px;
+  height: 400px;
+  box-sizing: border-box;
+  display: none;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.slideshow-bob-container .bob.bob-active {
+  display: flex;
+}
+
+.slideshow-bob-container .bob .bob-content.fade-in {
+  opacity: 1;
+  transition: all 0.8s;
+  margin-right: 0;
+}
+
+.slideshow-bob-container .bob .bob-content {
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  opacity: 0;
+  /*margin-right: -1000px;*/
+  transition: all 0.8s;
+}
+
+.slideshow-bob-container .bob .bob-foot {
+  width: 100%;
+  background-color: #00274d;
+  border-bottom: 4px solid #8cc63f;
+  /*margin-top: auto;*/
+  box-sizing: border-box;
+  padding: 12px 12px 7px 12px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #fff;
+  font-size: 11px;
+  box-sizing: border-box;
+}
+
+.slideshow-bob-container .bob .bob-foot .notice {
+  margin: 0 auto;
+}
+
+.slideshow-bob-container .bob .bob-foot .slide-number {
+  width: 52px;
+  text-align: right;
+}
+
+.offscreen {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  margin-top: -1px;
+}
+
+.logo {
+  padding: 10px 10px 6px 10px;
+  text-align: left;
+  background: #00274d;
+  border-bottom: 4px solid #8cc63f;
+  width: 110px;
+  position: absolute;
+  top: 11px;
+  left: 0;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+.by-who p {
+  font-size: 20px;
+}

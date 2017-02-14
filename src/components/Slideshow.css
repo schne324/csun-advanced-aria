@@ -21,8 +21,7 @@
 
 .slideshow-bob-container .bob .bob-content.fade-in {
   opacity: 1;
-  transition: all 0.8s;
-  margin-right: 0;
+  transition: all 0.75s;
 }
 
 .slideshow-bob-container .bob .bob-content {
@@ -31,8 +30,22 @@
   margin-top: auto;
   margin-bottom: auto;
   opacity: 0;
-  /*margin-right: -1000px;*/
-  transition: all 0.8s;
+  transition: all 0.75s;
+}
+
+.slideshow-bob-container[data-swing-animation="true"] .bob.next .bob-content {
+  margin-right: -1000px;
+  transition: all 0.75s;
+}
+
+.slideshow-bob-container[data-swing-animation="true"] .bob.prev .bob-content {
+  margin-left: -1000px;
+  transition: all 0.75s;
+}
+
+.slideshow-bob-container[data-swing-animation="true"] .bob .bob-content.fade-in {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 .slideshow-bob-container .bob .bob-foot {

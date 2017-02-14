@@ -13,13 +13,19 @@ class Slideshow extends Component {
         width: window.innerWidth,
         height: window.innerHeight
       },
-      slide: 0
+      slide: 0,
+      direction: 'next'
     };
   }
 
   render() {
     return (
-      <Show dimensions={this.state.dimensions} slide={this.state.slide} />
+      <Show
+        dimensions={this.state.dimensions}
+        slide={this.state.slide}
+        direction={this.state.direction}
+        swing={true} // this determines if we should use fade AND swing in from direction (true), or just fade (false)
+      />
     );
   }
 
@@ -36,9 +42,13 @@ class Slideshow extends Component {
     const which = e.which;
     if (which < 37 || which > 40) { return; }
     const slide = this.state.slide;
-    const newSlide = nexts.indexOf(which) > -1 ? slide + 1 : slide - 1;
+    const isNext = nexts.indexOf(which) > -1;
+    const newSlide = isNext ? slide + 1 : slide - 1;
     if (newSlide >= 0 && newSlide < length) {
-      this.setState({slide: newSlide});
+      this.setState({
+        slide: newSlide,
+        direction: isNext ? 'next' : 'prev'
+      });
     }
   }
 

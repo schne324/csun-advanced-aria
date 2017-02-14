@@ -5,7 +5,7 @@ class Slide extends Component {
   render() {
     const isActive = this.props.slideIndex === this.props.activeIndex;
     const dirClass = this.props.slideIndex < this.props.activeIndex ? 'bob-prev' : 'bob-next';
-    const c = `bob ${isActive ? 'bob-active' : ''}`;
+    const c = `bob ${isActive ? 'bob-active' : ''} ${this.props.dir}`;
     return (
       <section style={this.props.style} className={c} data-slide-index={this.props.slideIndex}>
         <div className={`bob-content ${isActive ? '' : dirClass}`}>{this.props.children}</div>

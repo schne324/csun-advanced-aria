@@ -14,14 +14,14 @@ class Show extends Component {
     const slideStyle = {transform: `scale(${(Math.min(xScale, yScale) - .02)})`};
     const allSlides = slides.map((stuff, i) => {
       return (
-        <Slide style={slideStyle} key={i} activeIndex={this.props.slide} slideIndex={i}>
+        <Slide style={slideStyle} key={i} activeIndex={this.props.slide} slideIndex={i} dir={this.props.direction}>
           {stuff}
         </Slide>
       )
     });
 
     return (
-      <div className='slideshow-bob-container'>
+      <div className='slideshow-bob-container' data-swing-animation={this.props.swing}>
         {allSlides}
       </div>
     )

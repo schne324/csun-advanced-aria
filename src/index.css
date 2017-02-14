@@ -8,3 +8,25 @@ body {
 p {
   margin: 3px 0;
 }
+
+pre {
+  text-align: left;
+}
+
+.bob pre code {
+  display: inline-block;
+  text-align: left;
+}
+
+.bob h3 {
+  margin: 3px 0;
+}
+
+.bob .rsp p {
+  font-style: italic;
+  margin: 0;
+}
+
+.bob .rsp h3, .bob .rsp p {
+  display: inline;
+}

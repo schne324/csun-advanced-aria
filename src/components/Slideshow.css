@@ -26,6 +26,7 @@
 }
 
 .slideshow-bob-container .bob .bob-content {
+  max-width: 525px;
   align-self: center;
   margin-top: auto;
   margin-bottom: auto;

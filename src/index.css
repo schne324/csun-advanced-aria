@@ -5,12 +5,17 @@ body {
   box-sizing: border-box;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 p {
   margin: 3px 0;
 }
 
 pre {
   text-align: left;
+  overflow: auto;
 }
 
 .bob pre code {
@@ -29,4 +34,20 @@ pre {
 
 .bob .rsp h3, .bob .rsp p {
   display: inline;
+}
+
+.foot-note {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.at-images {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.at-images img {
+  width: 130px;
+  padding: 5px;
 }

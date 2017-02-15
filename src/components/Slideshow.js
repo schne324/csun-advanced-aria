@@ -8,12 +8,15 @@ const nexts = [39, 40];
 class Slideshow extends Component {
   constructor(props) {
     super(props);
+    let hash = location.hash;
+    hash = hash && hash.substring(1, hash.length);
+
     this.state = {
       dimensions: {
         width: window.innerWidth,
         height: window.innerHeight
       },
-      slide: 0,
+      slide: (hash && hash > 0 && hash <= length)  ? (parseInt(hash, 10) - 1) : 0,
       direction: 'next'
     };
   }
@@ -24,7 +27,7 @@ class Slideshow extends Component {
         dimensions={this.state.dimensions}
         slide={this.state.slide}
         direction={this.state.direction}
-        swing={true} // this determines if we should use fade AND swing in from direction (true), or just fade (false)
+        swing={true} // this determines animation of fade AND swing in (true), or just fade (false)
       />
     );
   }
@@ -45,6 +48,7 @@ class Slideshow extends Component {
     const isNext = nexts.indexOf(which) > -1;
     const newSlide = isNext ? slide + 1 : slide - 1;
     if (newSlide >= 0 && newSlide < length) {
+      location.hash = newSlide + 1;
       this.setState({
         slide: newSlide,
         direction: isNext ? 'next' : 'prev'

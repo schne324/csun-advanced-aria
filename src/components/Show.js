@@ -36,11 +36,12 @@ class Show extends Component {
   animate() {
     const active = document.querySelector('.bob-active');
     const content = active.querySelector('.bob-content');
+    const heading = content.querySelector('h2');
 
     window.setTimeout(() => {
       content.classList.add('fade-in');
+      if (heading) { document.title = heading.innerHTML; }
     }, 10);
-
   }
 
   componentDidUpdate() {

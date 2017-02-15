@@ -52,7 +52,7 @@
   width: 100%;
   background-color: #00274d;
   border-bottom: 4px solid #8cc63f;
-  /*margin-top: auto;*/
+  margin-top: auto;
   box-sizing: border-box;
   padding: 12px 12px 7px 12px;
   height: 44px;
@@ -87,7 +87,7 @@
   text-align: left;
   background: #00274d;
   border-bottom: 4px solid #8cc63f;
-  width: 110px;
+  width: 132px;
   position: absolute;
   top: 11px;
   left: 0;
@@ -99,4 +99,11 @@ h1 {
 
 .by-who p {
   font-size: 20px;
+}
+
+.flexr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

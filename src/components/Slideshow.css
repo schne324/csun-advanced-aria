@@ -28,7 +28,6 @@
   max-width: 525px;
   align-self: center;
   margin-top: auto;
-  margin-bottom: auto;
   opacity: 0;
   transition: all 0.75s;
 }

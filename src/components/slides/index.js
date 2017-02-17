@@ -34,7 +34,7 @@ const slides = [
         <li>Not necessary for simple / static web content with semantic HTML.</li>
       </ul>
       <Highlight className='xml'>
-        {`<input type="submit" value="Submit" />`}
+        {`<button type="submit">Submit</button>`}
       </Highlight>
     </div>
   ),
@@ -80,11 +80,14 @@ const slides = [
   (
     <div>
       <h2>ARIA to the Rescue</h2>
-      <p>For elements as simple as links and buttons, the best solution is to use real button and link elements.
-      However, to fix legacy content and to avoid modifying HTML tag structure / CSS rules, ARIA and JavaScript can save the day.
-      </p>
+      <ul>
+        <li>Best solution is to use native button and link elements</li>
+        <li>Quickly / easily fix legacy content</li>
+        <li>No modifying HTML tag structure</li>
+        <li>No modifying of CSS rules</li>
+      </ul>
       <Highlight className='xml'>{'<button type="submit">Submit</button>\n<a href="/foo">Foo</a>'}</Highlight>
-      <h3>The Fix</h3>
+      <h3>The Fix (if you absolutely have to)</h3>
       <ul>
         <li>Add the roles ("button" and "link")</li>
         <li>Make them focusable with a keyboard (using "tabindex")</li>
@@ -94,7 +97,7 @@ const slides = [
   ),
   (
     <div>
-      <h3>Result</h3>
+      <h2>Result</h2>
       <Highlight className='xml'>
       {
         `<div role="button" tabindex="0" class="sumit-button">Submit</div>\n` +
@@ -120,7 +123,7 @@ link.addEventListener('keydown', function (e) {
   ),
   (
     <div>
-      <h2>Is it well supported?</h2>
+      <h2>Is ARIA well supported?</h2>
       <p>Modern screen readers have excellent WAI-ARIA support.</p>
       <ul className='flexr at-images'>
         <li><img src={nvda} alt='NVDA' /></li>
@@ -141,6 +144,33 @@ link.addEventListener('keydown', function (e) {
         <li>The list goes on...</li>
       </ul>
       <p>Thanks to JavaScript and ARIA, all of these challenges can be conquered.</p>
+    </div>
+  ),
+  (
+    <div>
+      <h2>Things to remember...</h2>
+      <ul>
+        <li>An elements role, state and properties need to be exposed in a manner that AT can consume.</li>
+        <li>{"An element's accessible name (label)"}</li>
+        <li>
+          <span>Focusable / Keyboard operability</span>
+          <ul>
+            <li>Desktop web applications</li>
+            <li>{"Don't forget about mobile!"}</li>
+          </ul>
+        </li>
+        <li>For mobile - touch operability</li>
+        <li>Follow the spec according to the role</li>
+        <li>
+          <span>For custom controls:</span>
+          <a href="https://w3c.github.io/aria-in-html/#checklist">Custom Control Accessible Development Checklist</a>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h2 className='larger'>Complex / Dynamic Widgets</h2>
     </div>
   )
 ];

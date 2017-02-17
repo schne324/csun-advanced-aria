@@ -51,3 +51,11 @@ pre {
   width: 130px;
   padding: 5px;
 }
+
+ul li a {
+  margin-left: 3px;
+}
+
+.bob h2.large {
+  font-size: 44px;
+}

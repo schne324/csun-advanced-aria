@@ -36,7 +36,7 @@ class Show extends Component {
   animate() {
     const active = document.querySelector('.bob-active');
     const content = active.querySelector('.bob-content');
-    const heading = content.querySelector('h2');
+    const heading = content.querySelector('h2, h3, h4');
 
     window.setTimeout(() => {
       content.classList.add('fade-in');

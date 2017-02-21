@@ -59,3 +59,37 @@ ul li a {
 .bob h2.large {
   font-size: 44px;
 }
+
+.bob .key {
+  font-size: 16px;
+}
+
+.inline-code {
+  background: #F0F0F0;
+  padding: 2px;
+}
+
+
+/* highlightjs overrides for contrast */
+.bob .hljs-comment {
+  color: #686868;
+}
+
+.flex-list .flexr {
+  justify-content: flex-start;
+}
+
+.toggle-button {
+  padding: 5px;
+  border: 1px solid;
+  background: #eee;
+  margin: 9px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #000;
+}
+
+.toggle-button[aria-pressed="true"] {
+  background: #000 !important;
+  color: #fff;
+}

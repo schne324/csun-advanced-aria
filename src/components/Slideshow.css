@@ -33,12 +33,12 @@
 }
 
 .slideshow-bob-container[data-swing-animation="true"] .bob.next .bob-content {
-  margin-right: -1000px;
+  margin-right: -750px;
   transition: all 0.75s;
 }
 
 .slideshow-bob-container[data-swing-animation="true"] .bob.prev .bob-content {
-  margin-left: -1000px;
+  margin-left: -750px;
   transition: all 0.75s;
 }
 

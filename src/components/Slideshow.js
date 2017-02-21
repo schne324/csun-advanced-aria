@@ -4,6 +4,7 @@ import {length} from './slides/';
 import './Slideshow.css';
 
 const nexts = [39, 40];
+let xDown, yDown;
 
 class Slideshow extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Slideshow extends Component {
         dimensions={this.state.dimensions}
         slide={this.state.slide}
         direction={this.state.direction}
-        swing={true} // this determines animation of fade AND swing in (true), or just fade (false)
+        swing={true} // this determines animation of fade AND swing-in (true), or just fade (false)
       />
     );
   }
@@ -41,29 +42,61 @@ class Slideshow extends Component {
     });
   }
 
+  hash(idx) {
+    location.hash = idx + 1;
+  }
+
+  slideNavigation(dir) {
+    const slide = this.state.slide;
+    const newSlide = dir === 'next' ? slide + 1 : slide - 1;
+    if (newSlide >= 0 && newSlide < length) {
+      this.hash(newSlide);
+      this.setState({
+        slide: newSlide,
+        direction: dir
+      });
+    }
+  }
+
   handleKeydown(e) {
     const which = e.which;
     if (which < 37 || which > 40) { return; }
-    const slide = this.state.slide;
-    const isNext = nexts.indexOf(which) > -1;
-    const newSlide = isNext ? slide + 1 : slide - 1;
-    if (newSlide >= 0 && newSlide < length) {
-      location.hash = newSlide + 1;
-      this.setState({
-        slide: newSlide,
-        direction: isNext ? 'next' : 'prev'
-      });
+    this.slideNavigation(nexts.indexOf(which) > -1 ? 'next' : 'prev');
+  }
+
+  handleTouchStart(e) {
+    xDown = e.touches[0].clientX;
+    yDown = e.touches[0].clientY;
+  }
+
+  handleTouchMove(e) {
+    if (!xDown || !yDown) { return; }
+    const xUp = e.touches[0].clientX;
+    const yUp = e.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      this.slideNavigation(xDiff > 0 ? 'next' : 'prev');
     }
+
+    xDown = null;
+    yDown = null;
   }
 
   componentDidMount() {
     window.addEventListener('resize', () => this.updateDimensions());
     document.body.addEventListener('keydown', (e) => this.handleKeydown(e));
+    document.addEventListener('touchstart', this.handleTouchStart.bind(this));
+    document.addEventListener('touchmove', this.handleTouchMove.bind(this))
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize');
     document.body.removeEventListener('keydown');
+    document.removeEventListener('touchstart');
+    document.removeEventListener('touchmove');
   }
 }
 

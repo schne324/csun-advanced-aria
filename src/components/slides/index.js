@@ -1,5 +1,7 @@
 import React from 'react';
 import Highlight from 'react-highlight';
+import ToggleButton from '../examples/ToggleButton';
+// images
 import logo from '../../img/deque-logo-white.png';
 import nvda from '../../img/NVDA.jpg';
 import jaws from '../../img/jaws.jpg';
@@ -31,7 +33,7 @@ const slides = [
             <li>was NOT designed to form the basis of interactive applications</li>
           </ul>
         </li>
-        <li>Not necessary for simple / static web content with semantic HTML.</li>
+        <li>ARIA is not necessary for simple / static web content with semantic HTML.</li>
       </ul>
       <Highlight className='xml'>
         {`<button type="submit">Submit</button>`}
@@ -163,14 +165,239 @@ link.addEventListener('keydown', function (e) {
         <li>Follow the spec according to the role</li>
         <li>
           <span>For custom controls:</span>
-          <a href="https://w3c.github.io/aria-in-html/#checklist">Custom Control Accessible Development Checklist</a>
+          <a target='_blank' href="https://w3c.github.io/aria-in-html/#checklist">Custom Control Accessible Development Checklist</a>
         </li>
+        <li>Color contrast</li>
       </ul>
     </div>
   ),
   (
     <div>
       <h2 className='larger'>Complex / Dynamic Widgets</h2>
+    </div>
+  ),
+
+  // WIDGET: Toggle Buttons
+  (
+    <div>
+      <h2>Toggle Buttons</h2>
+      <a target='_blank' href='https://www.w3.org/TR/wai-aria-practices-1.1/#button'>WAI-ARIA Authoring Practices for Buttons</a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>What needs to happen?</h3>
+      <ul>
+        <li>Be keyboard operable (focusable and activatable)</li>
+        <li>Pressed state toggled by activation</li>
+      </ul>
+      <p>NOTE: the label of a toggle button must not change when the state changes</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Keyboard Interaction</h3>
+      <p><span className='key'>Space / Enter: </span> activates the button and toggles the pressed state</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Example</h3>
+      <ToggleButton />
+    </div>
+  ),
+
+  // WIDGET: Modal Dialogs
+  (
+    <div>
+      <h2>Modal Dialogs</h2>
+      <a target='_blank' href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal">WAI-ARIA Authoring Practices for Modal Dialogs</a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>What needs to happen?</h3>
+      <ul>
+        <li>
+          <span>Dialog trigger is clicked (and modal is opened)...</span>
+          <ul>
+            <li>Focus shifted to modal dialog (authoring practices suggest the first focusable element within dialog)</li>
+          </ul>
+        </li>
+        <li>
+          <span>Dialog is closed...</span>
+          <ul>
+            <li>Return focus to the trigger (the element that opened the modal dialog)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Keyboard Interaction</h3>
+      <ul>
+        <li>
+          <span className='key'>Tab</span>
+          <ul>
+            <li>shift focus to the <strong>next element</strong> in the tab order within the dialog</li>
+            <li>if focus is on last focusable element within the dialog, shift focus to the <strong>first element</strong> in the tab order within the dialog</li>
+          </ul>
+        </li>
+        <li>
+          <span className='key'>Shift + Tab</span>
+          <ul>
+            <li>shift focus the <strong>previous element</strong> in the tab order within the dialog</li>
+            <li>if focus is on the first focusable element within the dialog, shift focus to the <strong>last element</strong> in the tab order within the dialog</li>
+          </ul>
+        </li>
+        <li>
+          <span className='key'>Escape</span>
+          <ul>
+            <li>close the dialog</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Roles / States / Properties</h3>
+      <ul>
+        <li><Highlight>{'role="dialog"'}</Highlight></li>
+        <li>
+          <Highlight>{'aria-label="Label / purpose of modal"'}</Highlight>
+          <span>Or</span>
+          <Highlight>{'aria-label="id-of-visible-dialog-title"'}</Highlight>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>{"Don't forget about aria-hidden!"}</h3>
+      <ul>
+        <li>Apply <span className='inline-code'>aria-hidden="true"</span> to all elements except for the modal itself</li>
+        <li>This will prevent screen readers from being able to traverse outside of the modal</li>
+      </ul>
+
+    </div>
+  ),
+  (
+    // TODO: Fix the pattern library modal example:
+    // - move the modals outside of the role="main" so EVERYTHING is aria-hidden
+    <div>
+      <h3>Modal Dialog Example</h3>
+      <a target="_blank" href="https://pattern-library.dequelabs.com/composites/modals">Deque Pattern Library Modal</a>
+    </div>
+  ),
+  // WIDGET: Mega Menu
+  (
+    <div>
+      <h2>Mega Menu</h2>
+      <a target='_blank' href='https://www.w3.org/TR/wai-aria-practices-1.1/#menu'>WAI-ARIA Authoring Practices for Modal Dialogs</a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>What needs to happen?</h3>
+      <ul>
+        <li>When a submenu is opened, focus should be shifted to the first menu item</li>
+        <li>When a submenu is closed, focus should be shifted to the parent menu item that triggered the opening of the submenu</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Keyboard Interaction</h3>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Enter</h4>
+      <ul>
+        <li>If current item has a submenu, opens submenu and shifts focus to first item</li>
+        <li>If current item does not have a submenu, activates the focused menu item</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Down Arrow</h4>
+      <ul>
+        <li>If focus is on a menu item in a menubar, opens submenu and shifts focus to first item</li>
+        <li>If focus is within a menu, shifts focus to the next menu item (optionally circular)</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Up Arrow</h4>
+      <ul>
+        <li>If focus is within a menu, shifts focus to the previous menu item (optionally circular)</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Right Arrow</h4>
+      <ul>
+        <li>If focus on a menu in a menubar, shifts focus to the next item (optionally circular)</li>
+        <li>If focus is within a menu and on a menu item that has a submenu, opens submenu and shifts focus to first item</li>
+        <li>
+          <span>If focus is within a menu and on a menu item that does not have a submenu:</span>
+          <ul>
+            <li>closes submenu</li>
+            <li>moves focus to next menuitem in the menubar</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Left Arrow</h4>
+      <ul>
+        <li>If focus on a menu in a menubar, shifts focus to the previous item (optionally circular)</li>
+        <li>If focus is on a submenu of an item in a menu, closes the submenu and shifts focus to the parent menuitem</li>
+        <li>
+          <span>If focus is within a submenu of a menubar:</span>
+          <ul>
+            <li>closes submenu</li>
+            <li>moves focus to previous menuitem in the menubar</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h4>Escape</h4>
+      <p>Closes the menu and returns focus to the parent menuitem</p>
+    </div>
+  ),
+  (
+    <div>
+      <p>Try to avoid dual purpose menu items - those that both perform an action AND trigger a submenu</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Roles / States / Properties</h3>
+      <ul className='flex-list'>
+        <li className='flexr'><Highlight className='js'>{'role="menubar"'}</Highlight>(on the top-level menu)</li>
+        <li className='flexr'><Highlight className='js'>{'role="menuitem"'}</Highlight>(on the child menu items)</li>
+        <li className='flexr'><Highlight className='js'>{'aria-haspopup="true"'}</Highlight>(if it has a submenu)</li>
+      </ul>
+    </div>
+  ),
+  // TODO: ask Matt if this is cool?
+  (
+    <div>
+      <h3>Mega Menu Example</h3>
+      <a target='_blank' href='http://mattisner.com/a11y-examples/menu/'>
+        {'http://mattisner.com/a11y-examples/menu/'}
+      </a>
     </div>
   )
 ];

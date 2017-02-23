@@ -93,3 +93,11 @@ ul li a {
   background: #000 !important;
   color: #fff;
 }
+
+.better-worse pre {
+  margin: 0;
+}
+
+.quote {
+  font-style: italic;
+}

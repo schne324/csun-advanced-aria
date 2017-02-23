@@ -136,6 +136,44 @@ link.addEventListener('keydown', function (e) {
   ),
   (
     <div>
+      <h2>ARIA Best Practices</h2>
+    </div>
+  ),
+  (
+    <div className='better-worse'>
+      <h3>Heading</h3>
+      <h4>Better</h4>
+      <Highlight className='xml'>{'<h2>About</h2>'}</Highlight>
+      <h4>Worse</h4>
+      <Highlight className='xml'>{'<div role="heading" aria-level="2">About</div>'}</Highlight>
+    </div>
+  ),
+  (
+    <div className='better-worse'>
+      <h3>List</h3>
+      <h4>Better</h4>
+      <Highlight className='xml'>{`<ul>
+  <li>One</li>
+  <li>Two</li>
+</ul>`}</Highlight>
+      <h4>Worse</h4>
+      <Highlight className='xml'>{`<div role="list">
+  <div role="listitem">One</div>
+  <div role="listitem">Two</div>
+</div>`}</Highlight>
+    </div>
+  ),
+  (
+    <div className='better-worse'>
+      <h3>Checkbox</h3>
+      <h4>Better</h4>
+      <Highlight className='xml'>{'<input type="checkbox" />'}</Highlight>
+      <h4>Worse</h4>
+      <Highlight className='xml'>{'<div role="checkbox" tabindex="0"></div>'}</Highlight>
+    </div>
+  ),
+  (
+    <div>
       <h2>Challenging Situations</h2>
       <ul>
         <li>Dynamic content that updates in remote parts of the page</li>
@@ -152,8 +190,8 @@ link.addEventListener('keydown', function (e) {
     <div>
       <h2>Things to remember...</h2>
       <ul>
-        <li>An elements role, state and properties need to be exposed in a manner that AT can consume.</li>
-        <li>{"An element's accessible name (label)"}</li>
+        <li>Role / States / Properties</li>
+        <li>Label</li>
         <li>
           <span>Focusable / Keyboard operability</span>
           <ul>
@@ -163,12 +201,61 @@ link.addEventListener('keydown', function (e) {
         </li>
         <li>For mobile - touch operability</li>
         <li>Follow the spec according to the role</li>
+        <li>Color contrast</li>
         <li>
           <span>For custom controls:</span>
           <a target='_blank' href="https://w3c.github.io/aria-in-html/#checklist">Custom Control Accessible Development Checklist</a>
         </li>
-        <li>Color contrast</li>
       </ul>
+    </div>
+  ),
+
+  // LIVE REGIONS
+  (
+    <div><h2>Live Regions</h2></div>
+  ),
+  (
+    <div>
+      <h3>What is a Live Region?</h3>
+      <p>An ARIA Live Region is a tool that can notify screen readers of content changes.</p>
+      <p>This allows for a completely customizable screen reader announcement <strong>without having to move focus!</strong></p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Uses of Live Regions</h3>
+      <ul>
+        <li>real-time updates about remote parts of the page</li>
+        <li>status updates</li>
+        <li>announce time sensitive information</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Examples of Live Regions</h3>
+      <ul>
+        <li>Chat logs</li>
+        <li>Server status updates (<span className="quote">connection lost</span>)</li>
+        <li>Confirmation messages (<span className="quote">changes have been saved</span>)</li>
+        <li>Progress indicators (<span className="quote">50% complete</span>)</li>
+        <li>Sports score updates (<span className="quote">Detroit fumbles at the 1 yard line</span>)</li>
+        <li>Weather alerts (<span className="quote">Winter storm warning in effect until 3am</span>)</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Notes on Live Regions</h3>
+      <p>Live regions should be used sparingly as they can easily create a verbose experience for screen reader users.</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Live Region Playground</h3>
+      <a target='_blank' href='http://schne324.github.io/live-region-playground/'>
+        {'http://schne324.github.io/live-region-playground/'}
+      </a>
     </div>
   ),
   (
@@ -176,7 +263,6 @@ link.addEventListener('keydown', function (e) {
       <h2 className='larger'>Complex / Dynamic Widgets</h2>
     </div>
   ),
-
   // WIDGET: Toggle Buttons
   (
     <div>
@@ -198,6 +284,20 @@ link.addEventListener('keydown', function (e) {
     <div>
       <h3>Keyboard Interaction</h3>
       <p><span className='key'>Space / Enter: </span> activates the button and toggles the pressed state</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Roles / States / Properties</h3>
+      <ul>
+        <li>
+          <Highlight>{'<button /> or role="button"'}</Highlight>
+        </li>
+        <li>
+          <Highlight>{'aria-pressed="true"'}</Highlight>
+          <Highlight>{'aria-pressed="false"'}</Highlight>
+        </li>
+      </ul>
     </div>
   ),
   (
@@ -391,13 +491,93 @@ link.addEventListener('keydown', function (e) {
       </ul>
     </div>
   ),
-  // TODO: ask Matt if this is cool?
   (
     <div>
       <h3>Mega Menu Example</h3>
       <a target='_blank' href='http://mattisner.com/a11y-examples/menu/'>
         {'http://mattisner.com/a11y-examples/menu/'}
       </a>
+    </div>
+  ),
+
+  // WIDGET: Tab panel (https://pattern-library.dequelabs.com/components/fields#code-samples)
+  (
+    <div>
+      <h2>Tab Panels</h2>
+      <a target='_blank' href='https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel'>
+        WAI-ARIA Authoring Practices for Tabs
+      </a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Keyboard Interaction</h3>
+      <ul>
+        <li>
+          <strong>Left Arrow:</strong> shifts focus to the previous tab. If focus is on first tab, shift focus to last tab (circular)
+        </li>
+        <li>
+          <strong>Right Arrow:</strong> shifts focus to the next tab. If focus is on the last tab, shift focus to the first tab (circular)
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Roles / States / Properties</h3>
+      <ul>
+        <li>
+          <span className='inline-code'>{'role="tablist"'}</span>
+          <span>
+          on the parent container of the tab elements.
+          </span>
+        </li>
+        <li>
+          <span className='inline-code'>{'role="tab"'}</span>
+          <span>on the tab element within the <span className='inline-code'>{'role="tablist"'}</span> container</span>
+        </li>
+        <li>
+          <span className='inline-code'>{'role="tabpanel"'}</span>
+          <span>On each of the panel elements</span>
+        </li>
+        <li>
+          <span className='inline-code'>aria-controls</span>
+          <span>{'on the tab element referring to it\'s panel'}</span>
+        </li>
+        <li>
+          <span className='inline-code'>{'aria-selected="true"'}</span>
+          <span>on the selected tab, </span>
+          <span className='inline-code'>{'aria-selected="false"'}</span>
+          <span>on all other tabs</span>
+        </li>
+        <li>
+          <span>Each <span className='inline-code'>{'role="tabpanel"'}</span> element needs
+            <span className='inline-code'>aria-labelledby</span> {'referring to it\'s tab element'}
+          </span>
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Example Markup</h3>
+      <div role='textbox' tabIndex='0' aria-readonly='true'>
+        <Highlight>
+        {`<ul role="tablist">
+  <li id="tab1" aria-selected="true" aria-controls="panel1" role="tab" tabindex="0">Tab 1</li>
+  <li id="tab2" aria-selected="false" aria-controls="panel2" role="tab" tabindex="-1">Tab 2</li>
+</ul>
+<div id="panel1" aria-labelledby="tab1" role="tabpanel" aria-hidden="false">Panel 1 content...</div>
+<div id="panel2" aria-labelledby="tab2" role="tabpanel" aria-hidden="true">Panel 2 content...</div>`}
+        </Highlight>
+      </div>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Tab Example</h3>
+      <a target='_blank' href="https://pattern-library.dequelabs.com/components/fields#code-samples">Deque Pattern Library Tabs</a>
+      <p>Which uses the <a target='_blank' href='https://github.com/schne324/a11y-tabs'>A11y Tabs Plugin</a></p>
     </div>
   )
 ];

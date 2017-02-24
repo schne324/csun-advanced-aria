@@ -3,6 +3,12 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  background: #eee;
+}
+
+.bob {
+  background-color: #fff;
+  box-shadow: 0 0 10px #ccc;
 }
 
 * {
@@ -68,6 +74,7 @@ ul li a {
 .inline-code {
   background: #F0F0F0;
   padding: 2px;
+  font-family: monospace;
 }
 
 
@@ -105,4 +112,8 @@ ul li a {
 
 .with-inline-code li {
   line-height: 24px;
+}
+
+.mono {
+  font-family: monospace;
 }

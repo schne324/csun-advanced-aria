@@ -89,6 +89,10 @@ const slides = [
         <li>No modifying of CSS rules</li>
       </ul>
       <Highlight className='xml'>{'<button type="submit">Submit</button>\n<a href="/foo">Foo</a>'}</Highlight>
+    </div>
+  ),
+  (
+    <div>
       <h3>The Fix (if you absolutely have to)</h3>
       <ul>
         <li>Add the roles ("button" and "link")</li>
@@ -99,7 +103,7 @@ const slides = [
   ),
   (
     <div>
-      <h2>Result</h2>
+      <h3>Result</h3>
       <Highlight className='xml'>
       {
         `<div role="button" tabindex="0" class="sumit-button">Submit</div>\n` +
@@ -648,6 +652,52 @@ link.addEventListener('keydown', function (e) {
     </div>
   ),
   (
+    <h2 className="larger inline-code">{'role="application"'}</h2>
+  ),
+  (
+    <div>
+      <h3>What is <span className='inline-code'>{'role="application"'}</span>?</h3>
+      <p>A region declared as a web application, as opposed to a web document. Causes assistive technologies to switch into a mode where key presses that are normally intercepted and interpreted by the AT are instead passed directly to the browser.</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>When should <span className='inline-code'>{'role="application"'}</span> be used?</h3>
+      <p><strong>Short answer: </strong>VERY VERY RARELY...</p>
+      <p>It should only be used if the content consists of only focusable / interactive controls / mostly advanced widgets (like a real desktop application)</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Do not use <span className='inline-code'>{'role="application"'}</span> for the following widgets</h3>
+      <ul className='mono'>
+        <li>textbox</li>
+        <li>textarea</li>
+        <li>checkbox</li>
+        <li>radio</li>
+        <li>button</li>
+        <li>selects</li>
+        <li>links / paragraphs / headings</li>
+        <li>tree view</li>
+        <li>slider</li>
+        <li>table</li>
+        <li>tabs</li>
+        <li>dialogs</li>
+        <li>toolbars / menus</li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Example uses of <span className='inline-code'>{'role="application"'}</span></h3>
+      <ul>
+        <li><a target='_blank' href='https://docs.google.com/document/d/1VQHzWm5mN1dSv5clbzubvePLC6RjLurGzlaYzXQq-T0/edit'>Google Docs</a></li>
+        <li><a target='_blank' href='https://dequeuniversity.com/library/aria/date-pickers/sf-date-picker'>Datepicker</a></li>
+      </ul>
+      <p><strong>Remember:</strong> if you have a valid use case for the application role - TEST IT with different browser / AT combos</p>
+    </div>
+  ),
+  (
     <h2 className='larger'>Validate your accessibility</h2>
   ),
   (
@@ -657,6 +707,9 @@ link.addEventListener('keydown', function (e) {
       <p>Because the ARIA spec only allows certain states and properties attributes to be used on certain roles, aXe is extremely useful to validate your implementation of ARIA.</p>
       <a target='_blank' href='https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd'>aXe Chrome Extension</a>
     </div>
+  ),
+  (
+    <h2 className='larger'>Questions?</h2>
   )
 ];
 

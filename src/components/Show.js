@@ -40,7 +40,7 @@ class Show extends Component {
 
     window.setTimeout(() => {
       content.classList.add('fade-in');
-      if (heading) { document.title = heading.innerHTML; }
+      if (heading) { document.title = heading.innerText; }
     }, 10);
   }
 

@@ -21,6 +21,7 @@ pre {
 .bob pre code {
   display: inline-block;
   text-align: left;
+  max-height: 285px;
 }
 
 .bob h3 {
@@ -100,4 +101,8 @@ ul li a {
 
 .quote {
   font-style: italic;
+}
+
+.with-inline-code li {
+  line-height: 24px;
 }

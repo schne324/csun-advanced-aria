@@ -211,6 +211,7 @@ link.addEventListener('keydown', function (e) {
   ),
 
   // LIVE REGIONS
+  // TODO: learn what aria-atomic does (I think its EVERYTHING or only stuff that changed?)
   (
     <div><h2>Live Regions</h2></div>
   ),
@@ -368,7 +369,7 @@ link.addEventListener('keydown', function (e) {
         <li>
           <Highlight>{'aria-label="Label / purpose of modal"'}</Highlight>
           <span>Or</span>
-          <Highlight>{'aria-label="id-of-visible-dialog-title"'}</Highlight>
+          <Highlight>{'aria-labelledby="id-of-visible-dialog-title"'}</Highlight>
         </li>
       </ul>
     </div>
@@ -578,6 +579,83 @@ link.addEventListener('keydown', function (e) {
       <h3>Tab Example</h3>
       <a target='_blank' href="https://pattern-library.dequelabs.com/components/fields#code-samples">Deque Pattern Library Tabs</a>
       <p>Which uses the <a target='_blank' href='https://github.com/schne324/a11y-tabs'>A11y Tabs Plugin</a></p>
+    </div>
+  ),
+
+  // WIDGET(s): checkboxes and radios
+  (
+    <div>
+      <h2>Checkboxes (dual-state)</h2>
+      <a target='_blank' href='https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox'>WAI-ARIA Authoring Practices for Checkboxes</a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>What needs to happen?</h3>
+      <p>Clicking, pressing space bar and tapping (mobile) should toggle the checkbox between the <strong>checked</strong> and <strong>not checked</strong> state</p>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Roles / States / Properties</h3>
+      <ul className='with-inline-code'>
+        <li>
+          <Highlight>{'role="checkbox"'}</Highlight>
+        </li>
+        <li>
+          <span>Needs an accessible label. <strong>Recommended</strong>: Visible label associated via</span>
+          <span className='inline-code'>aria-labelledby</span>
+        </li>
+        <li>
+          <span className='inline-code'>{'aria-checked="true"'}</span> when checked, <span className='inline-code'>{'aria-checked="false"'}</span> when not checked
+        </li>
+        <li>
+          If part of a group, <span className='inline-code'>{'role="group"'}</span> should be applied to the containing element, with <span className='inline-code'>{'aria-labelledby'}</span> pointing to the <span className='inline-code'>{'id'}</span> of the group label.
+        </li>
+        <li>
+          <strong>Best Practice: </strong>{'clicking the label should toggle the checkbox\'s checked state (to mimic native checkbox elements).'}
+        </li>
+      </ul>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Example Markup</h3>
+      <Highlight>
+      {`<div class="food" role="group" aria-labelledby="food">
+  <h4 id="food">Food you like (check all that apply)</h4>
+  <div class="dqpl-checkbox-wrap dqpl-flexr">
+    <div class="dqpl-checkbox" role="checkbox" tabindex="0" aria-labelledby="artichokes" aria-checked="false"></div>
+    <div class="dqpl-label" id="artichokes">Artichokes</div>
+  </div>
+  <div class="dqpl-checkbox-wrap dqpl-flexr">
+    <div class="dqpl-checkbox" role="checkbox" tabindex="0" aria-labelledby="hummus" aria-checked="true"></div>
+    <div class="dqpl-label" id="hummus">Hummus</div>
+  </div>
+  <div class="dqpl-checkbox-wrap dqpl-flexr">
+    <div class="dqpl-checkbox" role="checkbox" tabindex="0" aria-labelledby="mangos" aria-checked="false"></div>
+    <div class="dqpl-label" id="mangos">Mangos</div>
+  </div>
+  <button class="dqpl-button-primary" id="disable-toggle" type="button">Disable checkboxes</button>
+</div>`}
+      </Highlight>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Checkbox Example</h3>
+      <a target='_blank' href='https://pattern-library.dequelabs.com/components/checkboxes'>Deque Pattern Library Checkboxes</a>
+    </div>
+  ),
+  (
+    <h2 className='larger'>Validate your accessibility</h2>
+  ),
+  (
+    <div>
+      <h3>aXe</h3>
+      <p>aXe is an automated testing tool that finds accessibility issues on your webpage.</p>
+      <p>Because the ARIA spec only allows certain states and properties attributes to be used on certain roles, aXe is extremely useful to validate your implementation of ARIA.</p>
+      <a target='_blank' href='https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd'>aXe Chrome Extension</a>
     </div>
   )
 ];

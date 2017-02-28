@@ -40,7 +40,15 @@ class Show extends Component {
 
     window.setTimeout(() => {
       content.classList.add('fade-in');
-      if (heading) { document.title = heading.innerText; }
+      if (heading) {
+        document.title = heading.innerText;
+      } else {
+        // try data-page-title
+        const dataPageTitle = content.querySelector('[data-page-title]');
+        if (dataPageTitle) {
+          document.title = dataPageTitle.getAttribute('data-page-title');
+        }
+      }
     }, 10);
   }
 

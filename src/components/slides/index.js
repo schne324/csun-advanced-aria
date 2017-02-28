@@ -6,6 +6,7 @@ import logo from '../../img/deque-logo-white.png';
 import nvda from '../../img/NVDA.jpg';
 import jaws from '../../img/jaws.jpg';
 import voiceOver from '../../img/voice-over.png';
+import ebay from '../../img/verbose-live-region.png';
 
 const slides = [
   // title slide
@@ -94,10 +95,10 @@ const slides = [
   (
     <div>
       <h3>The Fix (if you absolutely have to)</h3>
-      <ul>
-        <li>Add the roles ("button" and "link")</li>
-        <li>Make them focusable with a keyboard (using "tabindex")</li>
-        <li>Make them keyboard operable (pressing SPACE or ENTER for buttons, pressing ENTER for links)</li>
+      <ul className='with-inline-code'>
+        <li>Add the roles (<span className='inline-code'>"button"</span> and <span className='inline-code'>"link"</span>)</li>
+        <li>Make them focusable with a keyboard (using <span className='inline-code'>tabindex</span>)</li>
+        <li>Make them keyboard operable (pressing <span className='inline-code'>SPACE</span> or <span className='inline-code'>ENTER</span> for buttons, pressing <span className='inline-code'>ENTER</span> for links)</li>
       </ul>
     </div>
   ),
@@ -215,7 +216,6 @@ link.addEventListener('keydown', function (e) {
   ),
 
   // LIVE REGIONS
-  // TODO: learn what aria-atomic does (I think its EVERYTHING or only stuff that changed?)
   (
     <div><h2>Live Regions</h2></div>
   ),
@@ -253,6 +253,7 @@ link.addEventListener('keydown', function (e) {
     <div>
       <h3>Notes on Live Regions</h3>
       <p>Live regions should be used sparingly as they can easily create a verbose experience for screen reader users.</p>
+      <img className='eb' width='350' src={ebay} alt='eBay auction page with several countdown timers' />
     </div>
   ),
   (
@@ -260,6 +261,14 @@ link.addEventListener('keydown', function (e) {
       <h3>Live Region Playground</h3>
       <a target='_blank' href='http://schne324.github.io/live-region-playground/'>
         {'http://schne324.github.io/live-region-playground/'}
+      </a>
+    </div>
+  ),
+  (
+    <div>
+      <h3>Dragon Drop</h3>
+      <a target='_blank' href='http://harris-schneiderman.com/demos/dragon-drop/index.html'>
+        {'http://harris-schneiderman.com/demos/dragon-drop/index.html'}
       </a>
     </div>
   ),
@@ -483,7 +492,7 @@ link.addEventListener('keydown', function (e) {
   ),
   (
     <div>
-      <p>Try to avoid dual purpose menu items - those that both perform an action AND trigger a submenu</p>
+      <p data-page-title='No Dual Purpose Menu Items!'>Try to avoid dual purpose menu items - those that both perform an action AND trigger a submenu</p>
     </div>
   ),
   (
@@ -530,11 +539,11 @@ link.addEventListener('keydown', function (e) {
   (
     <div>
       <h3>Roles / States / Properties</h3>
-      <ul>
+      <ul className='with-inline-code'>
         <li>
           <span className='inline-code'>{'role="tablist"'}</span>
           <span>
-          on the parent container of the tab elements.
+          on the parent container of the tab elements
           </span>
         </li>
         <li>
@@ -543,7 +552,7 @@ link.addEventListener('keydown', function (e) {
         </li>
         <li>
           <span className='inline-code'>{'role="tabpanel"'}</span>
-          <span>On each of the panel elements</span>
+          <span>on each of the panel elements</span>
         </li>
         <li>
           <span className='inline-code'>aria-controls</span>
@@ -566,23 +575,21 @@ link.addEventListener('keydown', function (e) {
   (
     <div>
       <h3>Example Markup</h3>
-      <div role='textbox' tabIndex='0' aria-readonly='true'>
-        <Highlight>
+      <Highlight>
         {`<ul role="tablist">
   <li id="tab1" aria-selected="true" aria-controls="panel1" role="tab" tabindex="0">Tab 1</li>
   <li id="tab2" aria-selected="false" aria-controls="panel2" role="tab" tabindex="-1">Tab 2</li>
 </ul>
 <div id="panel1" aria-labelledby="tab1" role="tabpanel" aria-hidden="false">Panel 1 content...</div>
 <div id="panel2" aria-labelledby="tab2" role="tabpanel" aria-hidden="true">Panel 2 content...</div>`}
-        </Highlight>
-      </div>
+      </Highlight>
     </div>
   ),
   (
     <div>
       <h3>Tab Example</h3>
       <a target='_blank' href="https://pattern-library.dequelabs.com/components/fields#code-samples">Deque Pattern Library Tabs</a>
-      <p>Which uses the <a target='_blank' href='https://github.com/schne324/a11y-tabs'>A11y Tabs Plugin</a></p>
+      <p>(uses the <a target='_blank' href='https://github.com/schne324/a11y-tabs'>A11y Tabs Plugin</a>)</p>
     </div>
   ),
 

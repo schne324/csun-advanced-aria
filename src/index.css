@@ -117,3 +117,8 @@ ul li a {
 .mono {
   font-family: monospace;
 }
+
+.eb {
+  display: block;
+  margin: 0 auto;
+}

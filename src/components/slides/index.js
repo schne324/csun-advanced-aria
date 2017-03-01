@@ -472,7 +472,7 @@ link.addEventListener('keydown', function (e) {
     <div>
       <h4>Left Arrow</h4>
       <ul>
-        <li>If focus on a menu in a menubar, shifts focus to the previous item (optionally circular)</li>
+        <li>If focus on a menu item in a menubar, shifts focus to the previous item (optionally circular)</li>
         <li>If focus is on a submenu of an item in a menu, closes the submenu and shifts focus to the parent menuitem</li>
         <li>
           <span>If focus is within a submenu of a menubar:</span>
